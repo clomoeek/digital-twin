@@ -1,4 +1,4 @@
-import * as THREE from './node_modules/three/build/three.module.js';
+import * as THREE from 'three';
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);  // 검정색 배경 설정
