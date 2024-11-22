@@ -1,0 +1,10 @@
+
+body {
+    /* browser 기본 margin 제거 */
+    margin: 0;
+}
+
+canvas {
+    /* canvas 요소를 inline요소가 아닌 block요소로 표시 */
+    display: block;
+}

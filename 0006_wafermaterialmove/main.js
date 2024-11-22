@@ -4,6 +4,9 @@ import { OrbitControls } from 'OrbitControls'; // OrbitControls를 가져와 카
 
 const scene = new THREE.Scene(); // 새로운 장면(scene) 생성
 
+// 배경색 설정
+scene.background = new THREE.Color(0x808080); // 회색 (#808080)
+
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); // 원근 카메라 생성
 camera.position.set(0, 1, 5); // 카메라 위치 설정
 
