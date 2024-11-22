@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>React App</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="1920" height="1080"></canvas>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.141.0/build/three.module.js",
+          "GLTFLoader": "https://unpkg.com/three@0.141.0/examples/jsm/loaders/GLTFLoader.js",
+          "OrbitControls": "https://unpkg.com/three@0.141.0/examples/jsm/controls/OrbitControls.js"
+        }
+      }
+    </script>
+    <script type="module">
+        import { GLTFLoader } from 'GLTFLoader';
+        import * as THREE from 'three';
+        import { OrbitControls } from 'OrbitControls';
+
+        let scene = new THREE.Scene();
+        let renderer = new THREE.WebGLRenderer({
+            canvas: document.querySelector('#canvas'),
+            antialias : true
+        });
+
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        //let camera = new THREE.PerspectiveCamera(50, 1);
+        let camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 10000);
+        camera.position.set(2000, 0, 15);  // 카메라 위치 설정
+        
+        
+        // OrbitControls를 추가합니다.
+        let controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; // 부드러운 회전을 위한 damping 활성화
+        controls.dampingFactor = 0.25;
+
+        let loader = new GLTFLoader();
+        loader.load('ChamberFloor.gltf', function (gltf) {
+            scene.add(gltf.scene);
+            scene.background = new THREE.Color('gray');
+            
+            let ambientLight = new THREE.AmbientLight(0xffffff, 5);  // 색상과 강도
+            scene.add(ambientLight);
+
+            let dirLight = new THREE.DirectionalLight(0xffffff, 5);
+            dirLight.position.set(0, 5, 5);  // 위치 설정
+            scene.add(dirLight);
+
+            function animate(){
+                requestAnimationFrame(animate);
+                controls.update(); // OrbitControls 업데이트를 추가합니다.
+                renderer.render(scene, camera);
+            }
+            animate();
+        });
+    </script>
+  </body>
+</html>
