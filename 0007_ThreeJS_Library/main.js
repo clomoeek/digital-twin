@@ -7,6 +7,9 @@ import { GLTFLoader } from 'GLTFLoader';
 // OrbitControls를 import : 카메라 조작을 가능하도록 함
 import { OrbitControls } from 'OrbitControls';
 
+// Dat.GUI를 import(local)
+import { GUI } from './node_modules/dat.gui/build/dat.gui.module.js';
+
 // 새로운 scene 생성
 const scene = new THREE.Scene();
 
@@ -57,6 +60,9 @@ const directLight1 = new THREE.DirectionalLight(0xffffff, 3);
 scene.add(directLight1);
 directLight1.position.set(0, 10, 0);
 
+
+// ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ 아래 내용은 추가로 정리 필요 ※ ※ ※ ※ ※ ※ ※ ※ ※ ※ ※
+
 // 모델을 저장할 변수 선언
 let model;
 
@@ -100,6 +106,15 @@ loader.load(
         console.error('An error occurred while loading the model', error); // 모델 로딩 중 에러 발생 시 메시지 출력
     }
 );
+
+
+// DAT.GUI 설정
+const gui = new GUI();
+const cameraFolder = gui.addFolder('Camera Position');
+cameraFolder.add(camera.position, 'x', -10, 10).name('X Position');
+cameraFolder.add(camera.position, 'y', -10, 10).name('Y Position');
+cameraFolder.add(camera.position, 'z', -10, 10).name('Z Position');
+cameraFolder.open();
 
 // Raycaster 생성 : 객체와의 교차 감지
 const raycaster = new THREE.Raycaster();
