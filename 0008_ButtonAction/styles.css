@@ -1,0 +1,31 @@
+/* body 스타일 */
+body {
+    margin: 0;
+    overflow: hidden; /* 스크롤바 제거 */
+  }
+  
+  /* WebGL 캔버스 스타일 */
+  canvas {
+    display: block; /* 캔버스를 화면에 꽉 차게 */
+  }
+  
+  /* 버튼 스타일 */
+  #controlButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 10; /* 캔버스 위에 버튼 표시 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #controlButton:hover {
+    background-color: #0056b3;
+  }
+  

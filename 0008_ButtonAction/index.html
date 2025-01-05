@@ -1,0 +1,61 @@
+<!-- 문서 유형 선언 : HTML5 -->
+<!DOCTYPE html>
+
+<!--
+html 영역 시작
+lang="en" : english
+-->
+<html lang="en">
+
+<!-- head 영역 시작 -->
+<head>
+
+    <!-- 문자 인코딩 설정 : UTF-8 -->
+    <meta charset="UTF-8">
+
+    <!--
+    width=device-width : 디바이스 화면의 너비에 맞게 웹페이지를 조정
+    initial-scale=1.0 : 초기 확대 배율을 1로 설정하여 기본 크기를 유지
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 문서 제목 설정-->
+    <title>Three.js Library</title>
+
+    <!-- 외부 CSS 파일 연결 -->
+    <link rel="stylesheet" href="styles.css">
+
+<!-- head 영역 끝 -->
+</head>
+
+<!-- body 영역 시작 -->
+<body>
+    <!--
+    type : javascript 모듈의 경로를 mapping하기 위한 설정
+    imports : URL을 지정하여 각 모듈을 가져올 수 있도록 하는 객체
+    -->
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://unpkg.com/three@0.141.0/build/three.module.js",
+            "GLTFLoader": "https://unpkg.com/three@0.141.0/examples/jsm/loaders/GLTFLoader.js",
+            "OrbitControls": "https://unpkg.com/three@0.141.0/examples/jsm/controls/OrbitControls.js"
+            
+          }
+        }
+      </script>
+    
+    <!--
+    type=module : 최신 javascript 모듈 방식으로 script 실행
+    src="main.js" : 외부 JS 파일 연결
+    -->
+    <script type="module" src="main.js"></script>
+
+    <button id="controlButton">Move Camera</button>
+<!-- body 영역 끝 -->
+</body>
+
+<!-- html 영역 끝-->
+</html>
+
+
